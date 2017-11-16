@@ -1,0 +1,54 @@
+h1{
+    color:white;
+    text-align:center;
+}
+
+h3{
+    color:white;
+    font-family: p22-marcel-script-pro, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+p{
+    color:white;
+    font-family: bickham-script-pro-3, sans-serif;
+}
+
+li{
+    color:white;
+}
+
+body{
+    background-color:"white";
+
+}
+html{
+    background: url("https://lh3.googleusercontent.com/zeSOf8CtrzZmYr9QJBsQZJwnCKXNNfpT16QfrryKU-dBO9kn6erciBMy-J5YWF4GwK7QKK2JgeNNQ-kt_AVa4cYf1nISVOuAWbaFZzWMxCvR1xsGbUwjLcsCiP0-2j3UHJMz3hBRMQqgM3rKht8PbCUvb5lIHCzg2hlfjzeJt4gpeNBFssKcKStiS5vaIRd9cSSSLMm9v2NYrfiarJrA35Zffx12ezoIQ7r7GkOMRUU2k45n8Nq0uzJk-EycUBkx4ftjKEsWZ9FrR_uz_oWrH7fMwXX0logSkQCDFafwpqEO9V2neUqFjBOb6XOf_N4CGlnz3aoPxNGkaAYxYDgWzyts0UgNfl0OiqC7gkn2-7glFWZzAQ3iCQiPlEtOvJdLKAASyG3EKz7QC8aeDthx-yUhN8h3GEo2YPIm5H0q7DLyTEpXbhTFlRDKbtQD3LcUg9T3-Z3K6V75fTxgYhHmBg14bPNjsbetrXaIx25877aIixrzU4JCRz0Py1nn2Bl3hXgCVHZNjhcgsgN9TRFL9eYio1wez4Egp6nVslSYTfuZbTxYVTQ4-UpWt95XVmKl8hQYGQAmXbIXSCZyQjwkV34Gvk7MwhYt-1Ro3MPxoQ=w373-h662-no") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size:cover;
+    background-size: cover;
+}
+h2{
+    color:white;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+  
+}
+
+form{
+    color:white;
+}
