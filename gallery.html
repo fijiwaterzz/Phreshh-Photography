@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+</style>
+<body>
+
+<h2 style="text-align:center">Lightbox</h2>
+
+<div class="row">
+  <div class="column">
+    <img src="https://lh3.googleusercontent.com/ij6NzrQG6MLQUDR2Gd6pLdARg67qjG5eO_T53TpdBMHkn6AmF-oZRwojJAdtEN7SzvEkXdYSQXqbaHyteX20i3n6HNwz08mVIB5rMNZJ43Gb5DE-DrhxF339qdKcx1jJfaWuN9Z3-y0A4YQn1sBj2gLr5_uu-W3xhkVFmVgF48HDBObHdAk3WcQhjg33HV_PDPs3xWRoxUFGOYVioqSX7jbiP2nrbJwtexq8bqkYQ9CdX2eABotCsVcLtv2B7iAhj0gHleIJ9NpmEOBuOBWbLdOPz5QF4zJyDE7holIMMv_g-BGRTSxW7WuQoBXZkk_tvZhdVoLT1bFIGECkwkU9WXE9GnLIg1cN_pOvVbTZAdbWJgVGvcWspg8_u7Cgk2S5nfRXplRTIkF4fZYsVtgtMAMDhDVqXfyalo_sg-jybAovVM_RZBOymeCA5pEN-kn9tiKFMju6Vrtb_jExEEB3wnKtDJaCmwSsT1JJt_DJ-VMvatK2VtT7w6QVGlmqFmWux64ALjyAZGkEp2t4Pxn-lUkuzjd6RgrrMyay9iRhuKgHM2Hs6mi1aUA1c5GMCa99Ysi7k9V7sqH2kKLraOnLFvN-svGTcfYLhqbwno4kOQ=w883-h662-no" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="https://lh3.googleusercontent.com/ZwnjiyNpW10s4oneaNh4yGSepIog6XP7t5X58zSu8bc4H7pWmwr3xDLi2Wp_wRuTrOYcIOMKTRPY9iqcQy3Sfrsvsnto09
+  </div>
+  <div class="column">
+    <img src="https://lh3.googleusercontent.com/dXTX9QhcehFDO_bZI7VJsIB4TCtYUT8jFskiuT1PpXZXbcrOFhUd26njlGRZBqju7yJUWtjlPYCelnp-E9TgdcSsb43YtqZM0ieCJaqNNR3xD3frcpdsAqLRhtJ3zCj2DprJ9IabvHRHQvbLtbOiGHbOo1TVsMhm8wOwaxS7xCuXj1CXIiDCE8uyQYLNek3yTYXv1tdi3YgbVMQoz7iYb59_leVgMOaiLFdDo9Q7BfvnKLl3YjP4qpFeGJ5x6CqfkoQiALwSdJH_N1NAauL_dLw0Y6ZjTI-OaEyRdxwK5u9e81S-x8cfMPx428RRf0DuGRJzfIWBZIOW1ddH56XIa4qGYIqQmcNE7LArSPt8bLcGFig3pTQOU4ARe-6tuGeFsONAWzwW92WV_mgaak1wbYDa5m0OSPgctZjbf6-Y-Q-RAE9NvHIbBaBm4qBTruKWwALKU1RWtl5RI2n9DW1ojNFBNvrWm_KX4kdullvrcBNkXYCP9R8IMiCwiRrreeZtup_7HAqSHb0SQ66AtxW7qrB0ecmnrmIjqHM4Ywc7pcyNp0XcBZ7odndDP-MN3xrqqM-VJalAI-1FBkhHmXIrpXXALd9CYxIsVdTBwG94rQ=w883-h662-no"
+  </div>
+  <div class="column">
+    <img src="https://lh3.googleusercontent.com/zNw1gYdKxTfjD1XeJxjPR_n3ZaoexAByUdN6xOWwBex-VfqifjtFi7HLhapMcvbly8w3aLwrfdFi3RywSiCWr7M6TTpc0B-s49OzqaRov2xJx76S38DhswGVOF_GM-bfvbg7cFAaSmYfn3Ixy0bkE4aV7IEhSWpOHvXa8NHwYPP6YGd9S1_iCdFTdzWJwag1ultiiLbp-FePlgizpmg__g7It6vKz8np5erB7p49Q21c_rmt8cbdN6lr_OMW51CAz0zuYi_M-E3VwKCfY6qLx3iv66jzY59a-uNB7beejsODga0iwF_I8SVVnCN2L4senBtj7qhzk1MUdq3IVgIXhzj75e_BTLtDB3maH8oaudAQY2mte1n5zpobmKHue233U923-p3H_CtpQ9qbEg5kWtNyzSnlRdprv8ojWUOOLDxw6P6M58fcfM9clgRWYG0Xk4NNTOF53uO-fKW72FgWKTkOCuSOehj0_MkBVVNLdWxxpyyXbbhgWjcs7AAcypKrGibNh1l4NsrFm3F4AwJcpo5Z8RHzFp0yLmWUN2Tkw43QpJvgKP_8AbM2KEicAYoIRVw_kEt48Q-kxY6BpFXuAFHUfsu2dzsM7Bopevo5lw=w883-h662-no" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="img_nature_wide.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="img_fjords_wide.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="img_mountains_wide.jpg" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="img_lights_wide.jpg" style="width:100%">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    <div class="column">
+      <img class="demo cursor" src="img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img_fjords_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>
